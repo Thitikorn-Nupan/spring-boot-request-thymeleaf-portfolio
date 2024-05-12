@@ -1,7 +1,6 @@
 package com.ttknpdev.controller;
 
 import com.ttknpdev.logging.Logback;
-import com.ttknpdev.repository.LineNotifyRepo;
 import com.ttknpdev.resttemplate.RequestRenderServiceServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 public class RouteControl {
 
     private final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-    private LineNotifyRepo lineNotifyRepo;
     private Logback logback;
 
     /**
@@ -28,11 +26,9 @@ public class RouteControl {
     */
     private RequestRenderServiceServer requestRenderServiceServer;
 
-    @Autowired
-    public RouteControl(LineNotifyRepo lineNotifyRepo) {
+    public RouteControl() {
         logback = new Logback(RouteControl.class);
         requestRenderServiceServer = new RequestRenderServiceServer();
-        this.lineNotifyRepo = lineNotifyRepo;
     }
 
     @GetMapping(value = "/server")
@@ -83,7 +79,6 @@ public class RouteControl {
                                 "*******************************\n" +
                                 "*******************************";
                         // send message,sticker to line
-                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                         // ***** it closes before timing (18 minutes after request) *** because render sleeps
 
                         // stop all threads 1 hour
