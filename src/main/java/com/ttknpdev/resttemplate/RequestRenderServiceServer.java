@@ -12,7 +12,7 @@ public class RequestRenderServiceServer {
     private RestTemplate restTemplate ;
     private HttpHeaders headers;
     private final String URL1 = "https://ttknpde-v-portfolio.onrender.com/server"; // request portfolio
-    private final String URL2 = "https://request-ttknpde-v-portfolio.onrender.com/server"; // request own
+    private final String URL2 = "https://request-ttknpde-v-portfolio.onrender.com/server"; // request own 
     private Logback logback;
 
     public RequestRenderServiceServer() {

@@ -37,7 +37,7 @@ public class RouteControl {
     }
 
     @GetMapping(value = "/initial-reminder")
-    private ResponseEntity<String> initial() throws Exception {
+    private ResponseEntity<String> initial() {
 
         logback.log.info("user requested /initial-reminder");
         // for using while loop
@@ -46,7 +46,7 @@ public class RouteControl {
           var in Java ช่วยให้นักพัฒนาสามารถประกาศตัวแปรในเครื่องได้โดยไม่ต้องระบุประเภทข้อมูล เช่น int, long, String หรือ char
         */
         // prepare variables
-        int day , hour , stickerPackageId = 11537 , stickerId = 52002734;
+        int day , hour;
         String currentTime , message;
 
         while (condition) {
@@ -66,8 +66,9 @@ public class RouteControl {
 
                     logback.log.debug("day : {}",day);
 
+                    int timeout = 10;
+
                     // if hour == 7 AM Do ...
-                    int timeout = 5;
                     if (hour == 7) {
                         message = "***********\n" +
                                 "*******************************\n" +
