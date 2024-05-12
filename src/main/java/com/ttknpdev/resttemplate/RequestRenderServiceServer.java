@@ -11,7 +11,8 @@ public class RequestRenderServiceServer {
 
     private RestTemplate restTemplate ;
     private HttpHeaders headers;
-    private final String URL = "https://ttknpde-v-portfolio.onrender.com/server";
+    private final String URL1 = "https://ttknpde-v-portfolio.onrender.com/server"; // request portfolio
+    private final String URL2 = "https://request-ttknpde-v-portfolio.onrender.com/server"; // request own
     private Logback logback;
 
     public RequestRenderServiceServer() {
@@ -23,7 +24,9 @@ public class RequestRenderServiceServer {
         headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity< String > entity = new HttpEntity<>(headers);
-        ResponseEntity< String > response = restTemplate.exchange(URL , HttpMethod.GET , entity , String.class);
+        ResponseEntity< String > response = restTemplate.exchange(URL1 , HttpMethod.GET , entity , String.class);
+        logback.log.info(response.getBody());
+        response = restTemplate.exchange(URL2 , HttpMethod.GET , entity , String.class);
         logback.log.info(response.getBody());
     }
 }
