@@ -47,6 +47,8 @@ public class RouteControl {
         */
         // prepare variables
         int day , hour;
+        int timeout = 5;
+
         String currentTime , message;
 
         while (condition) {
@@ -66,7 +68,6 @@ public class RouteControl {
 
                     logback.log.debug("day : {}",day);
 
-                    int timeout = 10;
 
                     // if hour == 7 AM Do ...
                     if (hour == 7) {
