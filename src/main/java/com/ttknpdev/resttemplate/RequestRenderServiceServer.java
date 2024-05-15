@@ -25,8 +25,8 @@ public class RequestRenderServiceServer {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity< String > entity = new HttpEntity<>(headers);
         ResponseEntity< String > response = restTemplate.exchange(URL1 , HttpMethod.GET , entity , String.class);
-        logback.log.info(response.getBody());
+        logback.log.warn(response.getBody());
         response = restTemplate.exchange(URL2 , HttpMethod.GET , entity , String.class);
-        logback.log.info(response.getBody());
+        logback.log.warn(response.getBody());
     }
 }
