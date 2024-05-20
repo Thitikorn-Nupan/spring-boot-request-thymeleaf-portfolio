@@ -64,7 +64,7 @@ public class RouteControl {
                 logback.log.debug("currentTime : {}", currentTime);
 
                 // days 11 , 12 , ... , 14
-                if (day != 20) {
+                if (day != 31) {
                     logback.log.debug("day : {}", day);
                     TimeUnit.MINUTES.sleep(timeout);
                     requestRenderServiceServer.requestRenderServer();
